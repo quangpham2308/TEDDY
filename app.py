@@ -79,18 +79,18 @@ st.write("\n")
 col4, col3 = st.columns(2)
 
 with col4:
-    st.subheader("Extremely High-Risk Test")
+    st.subheader("Possible Suicidal Thoughts (Low-Sensitivity)")
 
 with col3:
-    st.subheader("High-Risk Test")
+    st.subheader("Possible Suicidal Thoughts (High-Sensitivity)")
 
 col2, col1 = st.columns(2)
 
 with col2:
-    col2h = st.subheader("Medium-Risk Test")
+    col2h = st.subheader("Possible Depressive Thoughts (Low-Sensitivity)")
     
 with col1:
-    col1h = st.subheader("Low-Risk Test")
+    col1h = st.subheader("Possible Depressive Thoughts (High-Sensitivity)")
 
 with st.sidebar:
     st.title("Copy-paste an essay into the box below!")
