@@ -64,9 +64,6 @@ def Display(essay):
             ShowFlags(xgflags)
         
         with col3:
-            ShowFlags(lrsflags)
-        
-        with col4:
             ShowFlags(xgsflags)
 
         st.success("Calculations complete!")
