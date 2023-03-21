@@ -76,21 +76,16 @@ st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-
 st.write("Enter your essay into the sidebar.")
 st.write("\n")
 
-col4, col3 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
-with col4:
-    st.subheader("Possible Suicidal Thoughts (Low-Sensitivity)")
-
-with col3:
-    st.subheader("Possible Suicidal Thoughts (High-Sensitivity)")
-
-col2, col1 = st.columns(2)
+with col1:
+    col1h = st.subheader("Low-Risk Test")
 
 with col2:
-    col2h = st.subheader("Possible Depressive Thoughts (Low-Sensitivity)")
+    col2h = st.subheader("Medium-Risk Test")
     
-with col1:
-    col1h = st.subheader("Possible Depressive Thoughts (High-Sensitivity)")
+with col3:
+    st.subheader("High-Risk Test")
 
 with st.sidebar:
     st.title("Copy-paste an essay into the box below!")
