@@ -90,6 +90,4 @@ with col3:
 with st.sidebar:
     st.title("Copy-paste an essay into the box below!")
     essay = st.text_input("Enter text here...")
-    submit = st.button("Submit")
-    if submit:
-        headers = Display(essay)
+    submit = st.button("Submit", on_click=Display(essay))
