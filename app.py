@@ -82,7 +82,7 @@ with col1:
     col1h = st.subheader("Low-Risk Test")
 
 with col2:
-    col2h = st.subheader("Medium-Risk Test")
+    col2h = st.subheader("Mid-Risk Test")
     
 with col3:
     st.subheader("High-Risk Test")
