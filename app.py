@@ -70,7 +70,7 @@ def Display(essay):
 
 st.title("Welcome to :violet[T.E.D.D.Y.]")
 st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-t-e-d-d-y")
-st.write(":red[T.E.D.D.Y. is not meant to be used as a diagnostic tool.] It is designed to give you a general idea of whether someone in your school or workplace might need more emotional support.")
+st.caption("_Use the sidebar to enter an essay or chat conversation! T.E.D.D.Y. will use artificial intelligence to display sentences that may be a cause for concern.\n :red[T.E.D.D.Y. is not meant to be used as a diagnostic tool] - it is designed to give you a general idea of whether someone in your school or workplace might need more emotional support._")
 st.write("\n")
 
 col1, col2, col3 = st.columns(3)
@@ -88,6 +88,7 @@ with col3:
     st.caption("_The writer could be struggling with self-destructive thoughts._")
 
 with st.sidebar:
-    st.title("Copy-paste an essay into the box below!")
+    st.title("Copy-paste an essay / conversation into the box below!")
     essay = st.text_input("Enter text here...")
     submit = st.button("Submit", on_click=Display(essay))
+    st.write("[Help us improve T.E.D.D.Y!](https://forms.gle/eAYpKmd9udkdFUir6)")
