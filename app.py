@@ -36,7 +36,7 @@ def RunAI(string, classifier):
 
     elif classifier == "WordTest":
         for sentence in sentences:
-            words = word_tokenize(sentence)
+            words = word_tokenize(sentence.lower())
             for word in words:
                 if word in danger_words:
                     flags.append(sentence)
