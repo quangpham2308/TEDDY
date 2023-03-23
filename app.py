@@ -70,19 +70,22 @@ def Display(essay):
 
 st.title("Welcome to :violet[T.E.D.D.Y.]")
 st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-t-e-d-d-y")
-st.write("Enter your essay into the sidebar.")
+st.write(":red[T.E.D.D.Y. is not meant to be used as a diagnostic tool.] It is designed to give you a general idea of whether someone in your school or workplace might need more emotional support.")
 st.write("\n")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    col1h = st.subheader("Low-Risk Test")
+    st.subheader("Low-Risk Test")
+    st.caption("_The writer may be experiencing some struggles that need to be checked._")
 
 with col2:
-    col2h = st.subheader("Mid-Risk Test")
+    st.subheader("Mid-Risk Test")
+    st.caption("_The writer might be expressing depressive thoughts._")
     
 with col3:
     st.subheader("High-Risk Test")
+    st.caption("_The writer could be struggling with self-destructive thoughts._")
 
 with st.sidebar:
     st.title("Copy-paste an essay into the box below!")
