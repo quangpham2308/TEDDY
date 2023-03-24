@@ -12,7 +12,36 @@ def RunAI(string, classifier):
     sentences = sent_tokenize(string)
 
     flags = []
-    danger_words = ["die", "kill", "death", "gun", "bomb", "jump", "cut", "hurt", "harm", "threat", "abuse", "abused", "violence", "hopeless", "despair", "emptiness", "suicide", "shoot", "stab", "sad", "depress", "depressed", "depression"]
+    danger_words = ["die",
+                    "kill",
+                    "death",
+                    "gun",
+                    "bomb",
+                    "cut",
+                    "hurt",
+                    "harm",
+                    "threat",
+                    "abuse",
+                    "abused",
+                    "violence",
+                    "hopeless",
+                    "hopelessness",
+                    "despair",
+                    "emptiness",
+                    "empty",
+                    "suicide",
+                    "shoot",
+                    "stab",
+                    "sad",
+                    "depress",
+                    "depressed",
+                    "depression",
+                    "lost",
+                    "fail",
+                    "failure",
+                    "anxious",
+                    "anxiety",
+                    "alone"]
     
     if classifier == "XGBoost":
       for sentence in sentences:
