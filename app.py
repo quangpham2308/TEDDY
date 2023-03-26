@@ -111,7 +111,7 @@ def Display(essay):
 
 st.title("Welcome to :violet[T.E.D.D.Y.]")
 st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-t-e-d-d-y")
-st.caption("_Use the sidebar to enter an essay or chat conversation! T.E.D.D.Y. will use artificial intelligence to display sentences that may be a cause for concern.\n :red[T.E.D.D.Y. is not meant to be used as a diagnostic tool] - it is designed to give you a general idea of whether someone in your school or workplace might need more emotional support._")
+st.caption("_In the sidebar, enter any sufficient amount of text that is reflective of a person's thoughts. Any kind of text will do - even social media posts! - but essays, reflections, and chat conversations work best. T.E.D.D.Y. will use artificial intelligence to display sentences that may be a cause for concern.\n :red[T.E.D.D.Y. is not meant to be used as a diagnostic tool] - it is designed to give you a general idea of whether someone in your school or workplace might need more emotional support._")
 st.write("\n")
 
 col1, col2, col3, col4 = st.columns(4)
