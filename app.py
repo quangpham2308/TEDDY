@@ -121,15 +121,15 @@ with col1:
     st.caption("_The following sentences include words that may be a cause for concern._")
     
 with col2:
-    st.subheader("Low-Risk Test")
+    st.subheader("Potential Struggles Test")
     st.caption("_The writer may be experiencing some struggles that need to be checked._")
 
 with col3:
-    st.subheader("Mid-Risk Test")
+    st.subheader("Depressive Thoughts Test")
     st.caption("_The writer might be expressing depressive thoughts._")
     
 with col4:
-    st.subheader("High-Risk Test")
+    st.subheader("Self-Destructive Thoughts Test")
     st.caption("_The writer could be struggling with self-destructive thoughts._")
 
 with st.sidebar:
