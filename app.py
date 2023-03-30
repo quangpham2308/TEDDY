@@ -126,11 +126,11 @@ with col2:
 
 with col3:
     st.subheader("Depressive Thoughts Test")
-    st.caption("_The writer might be expressing depressive thoughts._")
+    st.caption("_The writer could be at risk for, or currently experiencing, depression._")
     
 with col4:
     st.subheader("Self-Destructive Thoughts Test")
-    st.caption("_The writer could be struggling with self-destructive thoughts._")
+    st.caption("_The writer might be struggling with self-destructive or suicidal thoughts._")
 
 with st.sidebar:
     st.title("Copy-paste an essay / conversation into the box below!")
