@@ -6,72 +6,7 @@ import nltk
 from nltk import sent_tokenize, word_tokenize
 nltk.download('punkt');
 
-#st.write(st.__version__)
-
-def RunAI(string, classifier):
-    sentences = sent_tokenize(string)
-
-    flags = []
-    danger_words = ["die",
-                    "kill",
-                    "death",
-                    "gun",
-                    "bomb",
-                    "cut",
-                    "hurt",
-                    "harm",
-                    "threat",
-                    "abuse",
-                    "abused",
-                    "violence",
-                    "hopeless",
-                    "hopelessness",
-                    "despair",
-                    "emptiness",
-                    "empty",
-                    "suicide",
-                    "shoot",
-                    "stab",
-                    "sad",
-                    "depress",
-                    "depressed",
-                    "depression",
-                    "lost",
-                    "fail",
-                    "failure",
-                    "anxious",
-                    "anxiety",
-                    "alone"]
-    
-    if classifier == "XGBoost":
-      for sentence in sentences:
-        if xgb_predict(sentence) == 1:
-          flags.append(sentence)
-
-    elif classifier == "LogisticRegression":
-      for sentence in sentences:
-        if lr_predict(sentence) == 1:
-          flags.append(sentence)
-
-    elif classifier == "XGBSuicide":
-      for sentence in sentences:
-        if xgb_suicide(sentence) == 1:
-          flags.append(sentence)
-    
-    elif classifier == "LogisticSuicide":
-      for sentence in sentences:
-        if lr_suicide(sentence) == 1:
-          flags.append(sentence)
-
-    elif classifier == "WordTest":
-        for sentence in sentences:
-            words = word_tokenize(sentence.lower())
-            for word in words:
-                if word in danger_words:
-                    flags.append(sentence)
-
-    return flags
-    
+#st.write(st.__version__)    
 
 def ShowFlags(flaglist):
     count = 0
@@ -86,15 +21,64 @@ def ShowFlags(flaglist):
             st.write("\n")
 
 def Display(essay):
+    
     if essay != "":
-        st.info("Loading...")
+        sentences = sent_tokenize(essay)
+        xgflags = []
+        lrflags = []
+        xgsflags = []
+        wrflags = []
         
-        xgflags = RunAI(essay, "XGBoost")
-        lrflags = RunAI(essay, "LogisticRegression")
-        xgsflags = RunAI(essay, "XGBSuicide")
-        lrsflags = RunAI(essay, "LogisticSuicide")
-        wrflags = RunAI(essay, "WordTest")
+        danger_words = ["die",
+                        "kill",
+                        "death",
+                        "gun",
+                        "bomb",
+                        "cut",
+                        "hurt",
+                        "harm",
+                        "threat",
+                        "abuse",
+                        "abused",
+                        "violence",
+                        "hopeless",
+                        "hopelessness",
+                        "despair",
+                        "emptiness",
+                        "empty",
+                        "suicide",
+                        "shoot",
+                        "stab",
+                        "sad",
+                        "depress",
+                        "depressed",
+                        "depression",
+                        "lost",
+                        "fail",
+                        "failure",
+                        "anxious",
+                        "anxiety",
+                        "alone"]
 
+        loading = st.progress(0, text = "Loading...")
+        i = 1
+        for sentence in sentences:
+            loading.progress(i/len(sentences), text = "Analyzing sentence "+str(i)+"/"+str(len(sentences))+"...")
+            if xgb_predict(sentence) == 1:
+                xgflags.append(sentence)
+            if lr_predict(sentence) == 1:
+                lrflags.append(sentence)
+            if xgb_suicide(sentence) == 1:
+                xgsflags.append(sentence)
+
+            words = word_tokenize(sentence.lower())
+            for word in words:
+                if word in danger_words:
+                    wrflags.append(sentence)
+            i+=1
+            
+        loading.progress(1, text="Complete!")
+        
         with col1:
             ShowFlags(wrflags)
             
@@ -107,7 +91,7 @@ def Display(essay):
         with col4:
             ShowFlags(xgsflags)
 
-        st.success("Calculations complete!")
+        #st.snow()
 
 st.title("Welcome to :violet[T.E.D.D.Y.]")
 st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-t-e-d-d-y")
