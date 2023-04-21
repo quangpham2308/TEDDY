@@ -1,3 +1,5 @@
+#TEDDY
+
 <h1>Welcome to Project T.E.D.D.Y!</h1>
 <h3>Text-based Early Distress Detector for Youth</h3>
 <p>Mental health concerns are a critical issue: ~14% of adolescents experience mental health disorders, yet these remain largely undetected and untreated, making suicide the 2nd leading cause of teenage death.</p>
