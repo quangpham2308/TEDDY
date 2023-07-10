@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from prediction import xgb_predict, lr_predict, xgb_suicide, lr_suicide
+from prediction import xgb_predict, lr_predict, xgb_suicide
 import nltk
 from nltk import sent_tokenize, word_tokenize
+import pdfplumber
 nltk.download('punkt');
 
 #st.write(st.__version__)    
@@ -96,6 +97,17 @@ def Display(essay):
 
         #st.snow()
 
+def GetPDFText(my_pdf):
+    try:
+        current_pdf = pdfplumber.open(my_pdf)
+        data = ""
+        pages = current_pdf.pages
+        for page in pages:
+            data += page.extract_text()
+    except:
+        data = ""
+    return data
+
 st.title("Welcome to :violet[T.E.D.D.Y.]")
 st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-t-e-d-d-y")
 st.caption("In the sidebar, enter any sufficient amount of text* that is reflective of a person's thoughts: essays, reflections, and chat conversations work best. T.E.D.D.Y. will use artificial intelligence to display sentences that may be a cause for concern.\n :red[T.E.D.D.Y. is not meant to be used as a diagnostic tool] - it is designed to give you a general idea of whether someone in your school or workplace might need more emotional support.")
@@ -121,7 +133,10 @@ with col4:
     st.caption("_The writer might be struggling with self-destructive or suicidal thoughts._")
 
 with st.sidebar:
-    st.title("Copy-paste an essay / conversation into the box below!")
-    essay = st.text_input("Enter text here...")
-    submit = st.button("Submit", on_click=Display(essay))
-    st.write("[Help us improve T.E.D.D.Y!](https://forms.gle/eAYpKmd9udkdFUir6)")
+    st.title("Run an essay/conversation through our text analyzer!")
+    essay = st.text_input("Copy-paste text here:")
+    submit = st.button("Submit Text", on_click=Display(essay))
+    uploaded_file = st.file_uploader('Or, upload a PDF file:', type="pdf")
+    submit2 = st.button("Submit Files", on_click=Display(GetPDFText(uploaded_file)))
+    st.write("[Learn more about T.E.D.D.Y!](https://hh.aanyagupta15.repl.co/index.html)")
+    st.write("[Help us improve!](https://forms.gle/eAYpKmd9udkdFUir6)")
