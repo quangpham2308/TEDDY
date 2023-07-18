@@ -6,6 +6,7 @@ import nltk
 from nltk import sent_tokenize, word_tokenize
 import pdfplumber
 from fpdf import FPDF
+import danger_words
 
 nltk.download('punkt');
 
@@ -47,40 +48,7 @@ def TEDDY(essay, progress, filename):
         xgsflags = []
         wrflags = []
         
-        danger_words = ["die",
-                        "kill",
-                        "death",
-                        "gun",
-                        "bomb",
-                        "cut",
-                        "hate",
-                        "hated",
-                        "hates",
-                        "hatred",
-                        "hurt",
-                        "harm",
-                        "threat",
-                        "abuse",
-                        "abused",
-                        "violence",
-                        "hopeless",
-                        "hopelessness",
-                        "despair",
-                        "emptiness",
-                        "empty",
-                        "suicide",
-                        "shoot",
-                        "stab",
-                        "sad",
-                        "depress",
-                        "depressed",
-                        "depression",
-                        "lost",
-                        "fail",
-                        "failure",
-                        "anxious",
-                        "anxiety",
-                        "alone"]
+        concerning_words = danger_words.GetDangerWords()
 
         loading = st.progress(0, text = "Loading...")
         i = 1
@@ -95,7 +63,7 @@ def TEDDY(essay, progress, filename):
 
             words = word_tokenize(sentence.lower())
             for word in words:
-                if word in danger_words:
+                if word in concerning_words:
                     wrflags.append(sentence)
             i+=1
 
@@ -127,7 +95,7 @@ def Refresh():
     st.stop()
 
 
-st.title("Welcome to :violet[T.E.D.D.Y. Bulk]")
+st.title("Welcome to :violet[T.E.D.D.Y. Premium]")
 st.subheader("Text-based Early Distress Detector for Youth", anchor="welcome-to-t-e-d-d-y")
 st.caption("In the sidebar, enter any sufficient amount of text* that is reflective of a person's thoughts: essays, reflections, and chat conversations work best. T.E.D.D.Y. will use artificial intelligence to display sentences that may be a cause for concern.\n :red[T.E.D.D.Y. is not meant to be used as a diagnostic tool] - it is designed to give you a general idea of whether someone in your school or workplace might need more emotional support.")
 st.caption("*:violet[A note to our testers:] Our research shows that the sentiments expressed in actual student data are subtle. :red[Thus, arbitrary or made-up statements for testing do not yield good results.] If you do not have actual student data for testing, we recommend searching for sample student essays (e.g., blog posts, college admission essay samples, etc.) online.")

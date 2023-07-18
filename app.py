@@ -5,6 +5,7 @@ from prediction import xgb_predict, lr_predict, xgb_suicide
 import nltk
 from nltk import sent_tokenize, word_tokenize
 import pdfplumber
+import danger_words
 nltk.download('punkt');
 
 #st.write(st.__version__)    
@@ -29,40 +30,7 @@ def Display(essay):
         xgsflags = []
         wrflags = []
         
-        danger_words = ["die",
-                        "kill",
-                        "death",
-                        "gun",
-                        "bomb",
-                        "cut",
-                        "hate",
-                        "hated",
-                        "hates",
-                        "hatred",
-                        "hurt",
-                        "harm",
-                        "threat",
-                        "abuse",
-                        "abused",
-                        "violence",
-                        "hopeless",
-                        "hopelessness",
-                        "despair",
-                        "emptiness",
-                        "empty",
-                        "suicide",
-                        "shoot",
-                        "stab",
-                        "sad",
-                        "depress",
-                        "depressed",
-                        "depression",
-                        "lost",
-                        "fail",
-                        "failure",
-                        "anxious",
-                        "anxiety",
-                        "alone"]
+        concerning_words = danger_words.GetDangerWords()
 
         loading = st.progress(0, text = "Loading...")
         i = 1
@@ -77,7 +45,7 @@ def Display(essay):
 
             words = word_tokenize(sentence.lower())
             for word in words:
-                if word in danger_words:
+                if word in concerning_words:
                     wrflags.append(sentence)
             i+=1
             
