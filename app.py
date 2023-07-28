@@ -106,5 +106,5 @@ with st.sidebar:
     submit = st.button("Submit Text", on_click=Display(essay))
     uploaded_file = st.file_uploader('Or, upload a PDF file:', type="pdf")
     submit2 = st.button("Submit File", on_click=Display(GetPDFText(uploaded_file)))
-    st.write("[Learn more about T.E.D.D.Y!](https://hh.aanyagupta15.repl.co/index.html)")
+    st.write("[Learn more about T.E.D.D.Y!](https://teddytechnovation.wordpress.com/)")
     st.write("[Help us improve!](https://forms.gle/eAYpKmd9udkdFUir6)")
