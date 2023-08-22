@@ -8,14 +8,7 @@ import pdfplumber
 import danger_words
 nltk.download('punkt');
 
-#st.write(st.__version__)    
-
-hide_github_icon = """
-#GithubIcon {
-  visibility: hidden;
-}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+#st.write(st.__version__)   
 
 def ShowFlags(flaglist):
     count = 0
