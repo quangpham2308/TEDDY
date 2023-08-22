@@ -8,14 +8,6 @@ import pdfplumber
 import danger_words
 nltk.download('punkt');
 
-hide_icon = """
-#MainMenu {
-  visibility: hidden;
-}
-"""
-
-st.markdown(hide_icon, unsafe_allow_html=True)
-
 #st.write(st.__version__)   
 
 def ShowFlags(flaglist):
