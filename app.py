@@ -10,6 +10,13 @@ nltk.download('punkt');
 
 #st.write(st.__version__)    
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 def ShowFlags(flaglist):
     count = 0
     flagcount = len(flaglist)
